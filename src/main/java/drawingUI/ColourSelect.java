@@ -6,7 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ColourSelect extends JPanel {
-    JButton but;
+    private JButton but;
     private Color currentColor=Color.BLACK;
 
     public ColourSelect(){

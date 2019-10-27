@@ -26,12 +26,14 @@ public class DrawingUIController  {
 
     private void setUpControlsPanel(){
         controlsPanel=new JPanel();
-        controlsPanel.setLayout(new GridLayout(5,1));
-        controlsPanel.add(cd);
+        controlsPanel.setLayout(new GridLayout(3,1));
+
         controlsPanel.add(rd);
+        controlsPanel.add(cd);
         controlsPanel.add(sd);
         controlsPanel.add(sSel);
         controlsPanel.add(cSel);
+
     }
 
     private void setUpMainPanel() {
@@ -51,6 +53,7 @@ public class DrawingUIController  {
 
     private void setUpDrawing() {
         drawing=new Drawing();
+
         drawing.addMouseListener(
             new MouseListener() {
                 @Override
@@ -68,7 +71,6 @@ public class DrawingUIController  {
                     else if(sSel.getCurrentShape()==ShapeSelect.SQUARE){
                         drawing.addSquare(e.getPoint(), cSel.getCurrentColor(), sd.getCurrentSide());
                     }
-                    drawing.invalidate();
                     drawing.repaint();
                     System.out.println("Mouse was pressed");
                 }
