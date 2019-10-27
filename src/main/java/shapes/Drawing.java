@@ -39,4 +39,13 @@ public class Drawing extends Canvas {
     public void paint(Graphics g){
         shapeDB.drawShapes(g);
     }
+    public int getNumCircles(){
+        return shapeDB.getNumCircles();
+    }
+    public int getNumRects(){
+        return shapeDB.getNumRects();
+    }
+    public int getNumSquares(){
+        return shapeDB.getNumSquares();
+    }
 }

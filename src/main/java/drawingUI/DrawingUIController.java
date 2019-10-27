@@ -14,6 +14,7 @@ public class DrawingUIController  {
     private CircleDescriptor cd;
     private RectDescriptor rd;
     private SquareDescriptor sd;
+    private ShapesData shapesData;
     private ShapeSelect sSel = new ShapeSelect();
     private ColourSelect cSel=new ColourSelect();
 
@@ -26,13 +27,14 @@ public class DrawingUIController  {
 
     private void setUpControlsPanel(){
         controlsPanel=new JPanel();
-        controlsPanel.setLayout(new GridLayout(3,1));
+        controlsPanel.setLayout(new GridLayout(3,2));
 
         controlsPanel.add(rd);
         controlsPanel.add(cd);
         controlsPanel.add(sd);
         controlsPanel.add(sSel);
         controlsPanel.add(cSel);
+        controlsPanel.add(shapesData);
 
     }
 
@@ -49,6 +51,7 @@ public class DrawingUIController  {
         sd=new SquareDescriptor();
         sSel=new ShapeSelect();
         cSel=new ColourSelect();
+        shapesData=new ShapesData();
     }
 
     private void setUpDrawing() {
@@ -73,6 +76,9 @@ public class DrawingUIController  {
                     }
                     drawing.repaint();
                     System.out.println("Mouse was pressed");
+                    shapesData.setCircs(drawing.getNumCircles());
+                    shapesData.setRects(drawing.getNumRects());
+                    shapesData.setSquares(drawing.getNumSquares());
                 }
 
                 public void mouseEntered(MouseEvent arg0) {
@@ -89,3 +95,5 @@ public class DrawingUIController  {
         return mainPanel;
     }
 }
+
+

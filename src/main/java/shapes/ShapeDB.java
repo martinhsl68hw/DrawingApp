@@ -21,4 +21,22 @@ public class ShapeDB {
         for(Shape p:shapes)
             p.draw(g);
     }
+
+    private int getCount(Class a){
+        int count=0;
+        for(Shape p:shapes){
+            if (p.getClass() == a) count++;
+        }
+        return count;
+    }
+    int getNumCircles() {
+        return getCount(Circle.class);
+    }
+    int getNumRects() {
+        return getCount(Rect.class);
+    }
+    int getNumSquares() {
+        return getCount(Square.class);
+    }
+
 }
