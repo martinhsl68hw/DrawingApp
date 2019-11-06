@@ -6,6 +6,7 @@ import java.awt.*;
 public class Main {
     private static GraphicsConfiguration gc;
     public static void main(String args[]){
+
         JFrame frame= new JFrame(gc);
         DrawingUIController drawingUIController=new DrawingUIController();
         frame.getContentPane().add(drawingUIController.getMainPanel());
