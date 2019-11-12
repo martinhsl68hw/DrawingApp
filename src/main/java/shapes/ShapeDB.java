@@ -17,8 +17,8 @@ import java.util.ArrayList;
 
 public class ShapeDB {
     //private String urlHead="http://localhost:8080";
-    //private String urlHead="http://localhost:8080/GradleREST";
-    private String urlHead="https://gradlerest.herokuapp.com";
+    private String urlHead="http://localhost:8080/GradleREST";
+    //private String urlHead="https://gradlerest.herokuapp.com";
     private ShapeReadWrite<Circle> srwC = new ShapeReadWrite<Circle>(urlHead);
     private ShapeReadWrite<Rect> srwR = new ShapeReadWrite<Rect>(urlHead);
     private ShapeReadWrite<Square> srwS = new ShapeReadWrite<Square>(urlHead);
@@ -30,28 +30,29 @@ public class ShapeDB {
     }
 
     private void getRemoteShapes(ArrayList<Shape> shapes) {
-        List<Circle> lsc=srwC.getRemoteShapeList(new TypeToken<List<Circle>>(){},"/getCircles");
+
+        List<Circle> lsc=srwC.getRemoteShapeList(new TypeToken<List<Circle>>(){},"/circles");
         for(Circle c:lsc)shapes.add(c);
-        List<Rect> lsr=srwR.getRemoteShapeList(new TypeToken<List<Rect>>(){},"/getRects");
+        List<Rect> lsr=srwR.getRemoteShapeList(new TypeToken<List<Rect>>(){},"/rects");
         for(Rect r:lsr)shapes.add(r);
-        List<Square> lss=srwS.getRemoteShapeList(new TypeToken<List<Square>>(){},"/getSquares");
+        List<Square> lss=srwS.getRemoteShapeList(new TypeToken<List<Square>>(){},"/squares");
         for(Square s:lss)shapes.add(s);
     }
 
     public void addCircle(Point pos, Color col, int radius){
         Circle c=new Circle(pos,col,radius);
         shapes.add(c);
-        srwC.addRemoteShape(c,"/addCircle");
+        srwC.addRemoteShape(c,"/circles");
     }
     public void addRect(Point pos, Color col, int w, int h){
         Rect c=new Rect(pos,col,w,h);
         shapes.add(c);
-        srwR.addRemoteShape(c,"/addRect");
+        srwR.addRemoteShape(c,"/rects");
     }
     public void addSquare(Point pos, Color col, int side){
         Square sq =new Square(pos,col,side);
         shapes.add(sq);
-        srwS.addRemoteShape(sq,"/addSquare");
+        srwS.addRemoteShape(sq,"/squares");
     }
     public void drawShapes(Graphics g){
         for(Shape p:shapes)
